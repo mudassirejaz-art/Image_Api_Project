@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Saved Images</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        h1 { text-align: center; margin: 20px 0; }
+        .dashboard { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin: 20px; }
+        .card { background-color: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); width: 250px; overflow: hidden; text-align:center; position: relative; }
+        .card img { width: 100%; height: 150px; object-fit: cover; }
+        .card p { margin: 5px 0; font-size: 14px; }
+        .download-btn { margin: 5px; padding: 5px 10px; border:none; border-radius:5px; cursor:pointer; background-color:#2ed573; color:white; }
+    </style>
+</head>
+<body>
+    <h1>Saved Images</h1>
+    <div class="dashboard">
+        {% for img in saved_images %}
+        <div class="card">
+            <img src="{{ img.url }}" alt="Saved Image">
+            <p>{{ img.photographer }}</p>
+            <a href="{{ img.url }}" download><button class="download-btn">Download</button></a>
+        </div>
+        {% endfor %}
+        {% if saved_images|length == 0 %}
+            <p style="text-align:center;">No saved images yet.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

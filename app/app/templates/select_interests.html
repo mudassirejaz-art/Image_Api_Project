@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Interests</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 800px; margin: 50px auto; text-align: center; }
+        .interest-options { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+        .interest-options label {
+            display: flex;
+            align-items: center;
+            background-color: #f0f0f0;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .interest-options label:hover { background-color: #e0e0e0; }
+        .interest-options input { margin-right: 5px; }
+        button { margin-top: 20px; padding: 10px 20px; background-color: #1e90ff; color: white; border: none; border-radius: 5px; cursor: pointer; display: none; }
+        button:hover { background-color: #0c7cd5; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Select Your Interests</h1>
+        <form action="/dashboard" method="POST" id="interest-form">
+            <div class="interest-options">
+                <label><input type="checkbox" name="interests" value="Nature">Nature</label>
+                <label><input type="checkbox" name="interests" value="Technology">Technology</label>
+                <label><input type="checkbox" name="interests" value="Cars">Cars</label>
+                <label><input type="checkbox" name="interests" value="Food">Food</label>
+                <label><input type="checkbox" name="interests" value="Sports">Sports</label>
+                <label><input type="checkbox" name="interests" value="Animals">Animals</label>
+                <label><input type="checkbox" name="interests" value="Travel">Travel</label>
+                <label><input type="checkbox" name="interests" value="Fashion">Fashion</label>
+                <label><input type="checkbox" name="interests" value="People">People</label>
+                <label><input type="checkbox" name="interests" value="Architecture">Architecture</label>
+                <label><input type="checkbox" name="interests" value="Nature Landscapes">Nature Landscapes</label>
+                <label><input type="checkbox" name="interests" value="Music">Music</label>
+                <label><input type="checkbox" name="interests" value="Health">Health</label>
+                <label><input type="checkbox" name="interests" value="Education">Education</label>
+                <label><input type="checkbox" name="interests" value="Animals Pets">Animals Pets</label>
+                <label><input type="checkbox" name="interests" value="Gaming">Gaming</label>
+                <label><input type="checkbox" name="interests" value="Space">Space</label>
+                <label><input type="checkbox" name="interests" value="History">History</label>
+                <label><input type="checkbox" name="interests" value="Movies">Movies</label>
+                <label><input type="checkbox" name="interests" value="Art">Art</label>
+                <label><input type="checkbox" name="interests" value="Books">Books</label>
+                <label><input type="checkbox" name="interests" value="Animals Wildlife">Animals Wildlife</label>
+                <label><input type="checkbox" name="interests" value="Photography">Photography</label>
+                <label><input type="checkbox" name="interests" value="Fitness">Fitness</label>
+                <label><input type="checkbox" name="interests" value="Cooking">Cooking</label>
+                <label><input type="checkbox" name="interests" value="DIY">DIY</label>
+                <label><input type="checkbox" name="interests" value="Finance">Finance</label>
+                <label><input type="checkbox" name="interests" value="Technology Gadgets">Technology Gadgets</label>
+                <label><input type="checkbox" name="interests" value="Nature Animals">Nature Animals</label>
+                <label><input type="checkbox" name="interests" value="Street Photography">Street Photography</label>
+                <label><input type="checkbox" name="interests" value="Wildlife">Wildlife</label>
+                <label><input type="checkbox" name="interests" value="Travel Destinations">Travel Destinations</label>
+            </div>
+
+            <button type="submit" id="continue-btn">Continue</button>
+        </form>
+    </div>
+
+    <script>
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const submitBtn = document.getElementById('continue-btn');
+
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', () => {
+                const anyChecked = Array.from(checkboxes).some(chk => chk.checked);
+                submitBtn.style.display = anyChecked ? 'inline-block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>
